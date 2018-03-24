@@ -1,7 +1,11 @@
 (function() {
 	var Board = {
 		size: 10,
-		maximumTurn: 3
+		maximumTurn: 3,
+		ladderStartPositions: [8, 52, 74],
+		ladderEndPositions: [34, 86, 99],
+		snakeStartPositions: [98, 75, 51],
+		snakeEndPositions: [1, 42, 27]
 	};
 
 	var boardElement = document.getElementById('board');
@@ -11,6 +15,16 @@
 	var player2Element = document.getElementById('player2');
 	var resultsElement = document.getElementById('results');
 	var resetElement = document.getElementById('reset');
+
+	function CreatePlayers(name) {
+		this.name = name;
+		this.position = 1;
+		this.turnCount = 0;
+		this.numberOfThrows = 0;
+		this.numberOfTimesSixRolled = 0;
+		this.numberOfLaddersClimbed = 0;
+		this.numberOfSnakesEncountered = 0;
+	}
 
 	function createBoard(rows, columns) {
 		boardElement.innerHTML = '';
@@ -26,26 +40,6 @@
 				cell.setAttribute('id', index)
 			}
 		}
-	}
-
-	function setUpLadders() {
-		Board.ladderStartPositions = [8, 52, 74];
-		Board.ladderEndPositions = [34, 86, 99];
-	}
-
-	function setUpSnakes() {
-		Board.snakeStartPositions = [98, 75, 51];
-		Board.snakeEndPositions = [1, 42, 27];
-	}
-
-	function CreatePlayers(name) {
-		this.name = name;
-		this.position = 1;
-		this.turnCount = 0;
-		this.numberOfThrows = 0;
-		this.numberOfTimesSixRolled = 0;
-		this.numberOfLaddersClimbed = 0;
-		this.numberOfSnakesEncountered = 0;
 	}
 
 	function setPositions(previousPosition, currentPlayer) {
@@ -146,21 +140,11 @@
 		}
 	}
 
-	function clearStats() {
+	function clearPlayerStats() {
 		var stats = document.querySelectorAll('.stats');
 		stats.forEach(function(stat) {
 			stat.remove();
 		});
-	}
-
-	function init() {
-		createBoard(10, 10);
-		setUpLadders();
-		setUpSnakes();
-		setUpPlayers();
-		setPositions(1, Board.player1);
-		setPositions(1, Board.player2);
-		clearStats();
 	}
 
 	function attachEvent() {
@@ -185,7 +169,7 @@
 		});
 
 		resultsElement.addEventListener('drop', function(event) {
-			if(event.target.id !== 'results') {
+			if (event.target.id !== 'results') {
 				return;
 			}
 			var card = event.dataTransfer.getData("text/plain");
@@ -193,7 +177,15 @@
 		});
 	}
 
+	function init() {
+		createBoard(10, 10);
+		setUpPlayers();
+		setPositions(1, Board.player1);
+		setPositions(1, Board.player2);
+		clearPlayerStats();
+		attachEvent();
+	}
+
 	init();
-	attachEvent();
 
 })();
