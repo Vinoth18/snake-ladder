@@ -102,14 +102,14 @@
 				return;
 			}
 
-			if (currentPlayer.position + diceValue === 100) {
+			var previousPosition = currentPlayer.position;
+			currentPlayer.position += diceValue;
+			if (currentPlayer.position === 100) {
+				setPositions(previousPosition, currentPlayer);
 				window.alert(currentPlayer.name + ' won the game');
 				showPlayerStats();
 				return;
 			}
-
-			var previousPosition = currentPlayer.position;
-			currentPlayer.position += diceValue;
 
 			var ladderIndex = Board.ladderStartPositions.indexOf(currentPlayer.position);
 			var snakeIndex = Board.snakeStartPositions.indexOf(currentPlayer.position);
