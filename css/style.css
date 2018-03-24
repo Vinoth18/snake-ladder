@@ -1,0 +1,69 @@
+.container .board-container,
+.container .results-container {
+	display: inline-block;
+}
+
+.container .results-container {
+	position: absolute;
+	margin-left: 50px;
+	height: 500px;
+    width: 300px;
+}
+
+#player1,
+#player2 {
+	border: 1px solid grey;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.stats {
+	font-size: 12px;
+	color: grey;
+}
+
+#board {
+    width: 500px;
+    height: 500px;
+    border: 1px solid grey;
+}
+
+#board tbody {
+	background-color: #fff8dc;
+}
+
+#board tr {
+    height: 50px;
+    border-bottom: 1px solid grey;
+}
+
+#board tr td {
+	position: relative;
+    height: 50px;
+    width: 50px;
+    border: 1px solid grey;
+}
+
+#board tr td .position-index {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 10px;
+}
+
+#board tr td .player1,
+#board tr td .player2 {
+	height: 15px;
+	width: 15px;
+	border-radius: 8px;
+	display: inline-block;
+}
+
+#board tr td .player1 {
+	background-color: lightgreen;
+}
+
+#board tr td .player2 {
+	background-color: lightsalmon;
+}
+

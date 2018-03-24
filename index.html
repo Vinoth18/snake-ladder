@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Snak and Ladder</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<div class='container'>
+			<div class='board-container'>
+				<div class='actions'>
+					<input id='roleDice' type='button' value='Role dice'></input>
+					<input id='reset' type='button' value='Reset game'></input>
+				</div>
+				<table id='board'></table>
+			</div>
+			<div id='results' class='results-container'>
+				<div>Results</div>
+				<div id='player1' draggable="true">
+					<div class='header'>Player1 details</div>
+				</div>
+				<div id='player2' draggable="true">
+					<div class='header'>Player2 details</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/app.js"></script>
+	</body>
+</html>
